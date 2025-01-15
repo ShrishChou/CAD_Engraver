@@ -389,7 +389,7 @@ def generate_aruco_pattern(aruco_id):
     binary_pattern = (binary_pattern > 127).astype(np.uint8)
 
     # Print the binary pattern
-    print("Binary Pattern:\n", binary_pattern)
+    # print("Binary Pattern:\n", binary_pattern)
 
     # Optional: Display the binary pattern
     # cv2.imshow("Binary Pattern", cv2.resize(binary_pattern * 255, (200, 200), interpolation=cv2.INTER_NEAREST))
@@ -398,24 +398,18 @@ def generate_aruco_pattern(aruco_id):
     binary_pattern=reflect_matrix_horizontally(binary_pattern)
     return binary_pattern
 
-example_array = [
-    [1, 0, 0, 0, 0, 0, 0, 1],
-    [0, 1, 0, 0, 0, 0, 1, 0],
-    [0, 0, 1, 0, 0, 1, 0, 0],
-    [0, 0, 0, 1, 1, 0, 0, 0],
-    [0, 0, 0, 1, 1, 0, 0, 0],
-    [0, 0, 1, 0, 0, 1, 0, 0],
-    [0, 1, 0, 0, 0, 0, 1, 0],
-    [1, 0, 0, 0, 0, 0, 0, 1]
-]
-# pattern=generate_aruco_pattern(42)
-# # Generate the STL file
-# combine_with_base(
-#     array=pattern,
-#     pattern_position=(-30, -30, 102),
-#     rotation=(0, 0, 0),
-#     output_file="Printing_Tag.stl"
-# )
+   
+
+tag_id=int(input("Input Aruco Tag: "))
+pattern=generate_aruco_pattern(tag_id)
+# Generate the STL file
+combine_with_base(
+    array=pattern,
+    pattern_position=(-30, -30, 102),
+    rotation=(0, 0, 0),
+    output_file=f'Printing_Tag{tag_id}.stl'
+)
+print(f"Find data at Printing_Tag{tag_id}.stl")
 # combine_text_with_base(
 #         text="1234",
 #         base_stl_path="combined.stl",
