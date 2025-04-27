@@ -405,6 +405,7 @@ pattern=generate_aruco_pattern(tag_id)
 # Generate the STL file
 combine_with_base(
     array=pattern,
+    base_stl_path="new housing 1-29.stl",
     pattern_position=(-30, -30, 102),
     rotation=(0, 0, 0),
     output_file=f'Printing_Tag{tag_id}.stl'
